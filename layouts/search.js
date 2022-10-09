@@ -17,7 +17,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
 
   return (
     <Container>
-      <div className="relative">
+      <div className="relative px-4 search flex items-center">
         <input
           type="text"
           placeholder={
@@ -27,7 +27,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
           onChange={e => setSearchValue(e.target.value)}
         />
         <svg
-          className="absolute right-3 top-3 h-5 w-5 text-black dark:text-white"
+          className="absolute right-3 h-5 w-5 text-black dark:text-white mr-2"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -45,13 +45,16 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
         tags={tags}
         currentTag={currentTag}
       />
-      <div className="article-container my-8">
+      <div className="article-container ">
         {!filteredBlogPosts.length && (
           <p className="text-gray-500 dark:text-gray-300">No posts found.</p>
         )}
-        {filteredBlogPosts.slice(0, 20).map(post => (
-          <BlogPost key={post.id} post={post} />
-        ))}
+          <div className={"grid grid-cols-1 md:grid-cols-3"}>
+              {filteredBlogPosts.slice(0, 20).map(post => (
+                  <BlogPost key={post.id} post={post} />
+              ))}
+          </div>
+
       </div>
     </Container>
   )

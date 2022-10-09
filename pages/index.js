@@ -3,6 +3,8 @@ import BlogPost from '@/components/BlogPost'
 import Pagination from '@/components/Pagination'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
+import {useEffect} from "react";
+import BlogItem from "@/components/BlogItem";
 
 export async function getStaticProps () {
   const posts = await getAllPosts({ includePages: false })
@@ -20,11 +22,55 @@ export async function getStaticProps () {
 }
 
 const blog = ({ postsToShow, page, showNext }) => {
+  useEffect(()=>{
+    console.log(postsToShow)
+  },[])
   return (
-    <Container title={BLOG.title} description={BLOG.description}>
-      {postsToShow.map(post => (
-        <BlogPost key={post.id} post={post} />
-      ))}
+    <Container title={BLOG.title} description={BLOG.description} >
+      <div className="grid md:grid-rows-3 grid-flow-row-dense grid-cols-3">
+        {postsToShow.map((post,index) => {
+          if (index%7 === 0) {
+            return         <div className="md:col-span-2 col-span-3  blog-first border-r-none">
+              <BlogPost key={post.id} post={post}/>
+            </div>
+              }
+          if(index%7===1){
+            return  <div className="md:col-span-1 col-span-3 blog-first ">
+              <BlogPost key={post.id} post={post}/>
+              <BlogPost key={postsToShow[index+1].id} post={postsToShow[index+1]}/>
+
+            </div>
+          }
+
+          if(index%7==3){
+            return   <div className="col-span-3 blog-first ">
+              <BlogPost key={post.id} post={post}/>
+            </div>
+          }
+          if(index%7==4){
+            return <div className="md:col-span-1 col-span-3 blog-first border-r-none">
+              <BlogPost key={post.id} post={post}/>
+              <BlogPost key={postsToShow[index+1].id} post={postsToShow[index+1]}/>
+
+            </div>
+          }
+          if(index%7==6){
+            return <div className="md:col-span-2 col-span-3 blog-first ">
+              <BlogPost key={post.id} post={post}/>
+            </div>
+          }
+        })}
+
+
+
+
+
+
+
+      </div>
+
+
+
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
   )

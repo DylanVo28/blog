@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Tags = ({ tags, currentTag }) => {
   if (!tags) return null
   return (
-    <div className="tag-container">
+    <div className="tag-container p-4 border-black border-l-1 border-r-1">
       <ul className="flex max-w-full mt-4 overflow-x-auto">
         {Object.keys(tags).map(key => {
           const selected = key === currentTag
