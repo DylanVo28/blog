@@ -19,7 +19,7 @@ A static blog build on top of Notion and Nextjs, deployed on [Vercel](https://ve
   </a>
 </p>
 
-Demo: [https://nobelium.vercel.app/](https://nobelium.vercel.app/)
+Demo: [https://dinhvdk.vercel.app/](https://dinhvdk.vercel.app/)
 
 <details><summary>Screenshot</summary>
 <img src="https://github.com/craigary/nobelium/blob/main/desktop.png?raw=true">
