@@ -4,12 +4,7 @@ module.exports = {
     domains: ['gravatar.com']
   },
   eslint: {
-    dirs: [
-      'components',
-      'layouts',
-      'lib',
-      'pages'
-    ]
+    ignoreDuringBuilds: true
   },
   async headers () {
     return [
