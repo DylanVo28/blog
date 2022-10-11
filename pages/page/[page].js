@@ -9,7 +9,7 @@ const Page = ({ postsToShow, page, showNext }) => {
   return (
       <Container>
         <div className="grid md:grid-rows-3 grid-flow-row-dense grid-cols-3">
-          {postsToShow.map((post, index) => {
+          {postsToShow && postsToShow.map((post, index) => {
             if (index % 7 === 0) {
               return (
                   <div className="md:col-span-2 col-span-3  blog-first border-r-none">
