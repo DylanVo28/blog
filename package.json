@@ -12,6 +12,7 @@
     "email": "i@craigary.net",
     "url": "http://craigary.net"
   },
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -33,6 +34,11 @@
     "react-notion-x": "^4.11.0",
     "use-ackee": "^3.0.0"
   },
+
+  "engines": {
+    "node": "18.x"
+  }
+,
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "eslint": "<8.0.0",
