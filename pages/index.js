@@ -8,7 +8,9 @@ import BlogItem from "@/components/BlogItem";
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
-  const postsToShow = posts.slice(0, BLOG.postsPerPage);
+  const postsToShow = posts.slice(0, BLOG.postsPerPage).sort(function(a,b){
+    return new Date(b.date?.start_date) - new Date(a.date?.start_date);
+  });
   const totalPosts = posts.length;
   const showNext = totalPosts > BLOG.postsPerPage;
   return {
